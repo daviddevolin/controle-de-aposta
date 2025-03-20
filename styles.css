@@ -1,3 +1,4 @@
+/* Estilos Gerais */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -10,41 +11,80 @@ body {
   
   .container {
     width: 100%;
-    max-width: 800px; /* Largura máxima do container */
+    max-width: 800px;
     padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
   }
   
-  .calendar {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* Links de Navegação */
+  .historico-link, .voltar-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
     text-align: center;
-    margin-bottom: 20px; /* Espaço entre o calendário e os detalhes */
+    transition: background-color 0.3s ease;
   }
   
-  #day-details {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px; /* Espaço entre os detalhes e o resumo */
+  .historico-link:hover, .voltar-link:hover {
+    background-color: #0056b3;
   }
   
-  .hidden {
-    display: none;
+  /* Filtros de Data */
+  .filtros {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
   }
   
+  .filtros label {
+    font-weight: bold;
+  }
+  
+  .filtros input {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .filtros button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .filtros button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Gráfico */
+  .grafico-container {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  /* Tabelas */
   table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
-    table-layout: fixed; /* Garante que as colunas tenham largura fixa */
+    table-layout: fixed;
   }
   
   th, td {
-    padding: 8px; /* Reduz o padding para economizar espaço */
+    padding: 10px;
     text-align: center;
     border: 1px solid #ddd;
     word-wrap: break-word;
@@ -52,47 +92,81 @@ body {
   
   th {
     background-color: #f9f9f9;
+    font-weight: bold;
   }
   
-  td {
+  /* Estilos Específicos para o Calendário */
+  .calendar {
+    margin-bottom: 20px;
+  }
+  
+  .calendar table {
+    width: 100%;
+  }
+  
+  .calendar td {
     cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   
-  td:hover {
+  .calendar td:hover {
     background-color: #f1f1f1;
   }
   
-  button {
-    background: none;
-    border: none;
-    font-size: 0.9em; /* Reduz o tamanho da fonte */
-    cursor: pointer;
-    margin: 2px; /* Reduz a margem */
-    padding: 5px 8px; /* Reduz o padding */
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
+  /* Estilos Específicos para os Detalhes do Dia */
+  #day-details {
+    margin-bottom: 20px;
   }
   
-  button:hover {
+  #day-details table {
+    width: 100%;
+  }
+  
+  #day-details input, #day-details select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  
+  #day-details button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #day-details button:hover {
     background-color: #0056b3;
   }
   
-  input, select {
-    padding: 5px;
-    margin: 2px;
-    width: 90%; /* Define uma largura relativa para os inputs e selects */
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 0.9em; /* Reduz o tamanho da fonte */
+  /* Estilos Específicos para o Histórico */
+  #historico {
+    margin-bottom: 20px;
   }
   
-  #summary-table {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  #historico table {
     width: 100%;
-    box-sizing: border-box;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .filtros {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .filtros input, .filtros button {
+      width: 100%;
+    }
+  
+    .calendar td {
+      padding: 8px;
+    }
   }

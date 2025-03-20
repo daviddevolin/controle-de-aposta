@@ -5,11 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Histórico de Investimentos</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- Adicionando Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="container">
     <h1>Histórico de Investimentos</h1>
     <a href="index.html" class="voltar-link">Voltar ao Calendário</a>
+
+    <!-- Filtros de Data -->
+    <div class="filtros">
+      <label for="data-inicio">Data Início:</label>
+      <input type="date" id="data-inicio">
+      <label for="data-fim">Data Fim:</label>
+      <input type="date" id="data-fim">
+      <button id="filtrar">Filtrar</button>
+    </div>
+
+    <!-- Gráfico de Lucro -->
+    <div class="grafico-container">
+      <canvas id="grafico-lucro"></canvas>
+    </div>
+
+    <!-- Tabela de Histórico -->
     <table id="historico-table">
       <thead>
         <tr>
