@@ -1,10 +1,18 @@
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 800px; /* Largura máxima do container */
     padding: 20px;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
   }
   
   .calendar {
@@ -13,19 +21,33 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Espaço entre o calendário e os detalhes */
+  }
+  
+  #day-details {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Espaço entre os detalhes e o resumo */
+  }
+  
+  .hidden {
+    display: none;
   }
   
   table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    table-layout: fixed; /* Garante que as colunas tenham largura fixa */
   }
   
   th, td {
-    padding: 10px;
+    padding: 8px; /* Reduz o padding para economizar espaço */
     text-align: center;
     border: 1px solid #ddd;
+    word-wrap: break-word;
   }
   
   th {
@@ -43,10 +65,10 @@ body {
   button {
     background: none;
     border: none;
-    font-size: 1em;
+    font-size: 0.9em; /* Reduz o tamanho da fonte */
     cursor: pointer;
-    margin: 0 10px;
-    padding: 5px 10px;
+    margin: 2px; /* Reduz a margem */
+    padding: 5px 8px; /* Reduz o padding */
     background-color: #007bff;
     color: white;
     border-radius: 5px;
@@ -56,28 +78,21 @@ body {
     background-color: #0056b3;
   }
   
-  .hidden {
-    display: none;
-  }
-  
-  #day-details {
-    margin-top: 20px;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  input, select {
+    padding: 5px;
+    margin: 2px;
+    width: 90%; /* Define uma largura relativa para os inputs e selects */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 0.9em; /* Reduz o tamanho da fonte */
   }
   
   #summary-table {
-    margin-top: 20px;
     background: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  input {
-    padding: 5px;
-    margin: 2px;
-    width: 80px;
+    width: 100%;
+    box-sizing: border-box;
   }
