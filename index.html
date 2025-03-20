@@ -32,6 +32,8 @@
   <!-- Tabela de detalhes do dia -->
   <div id="day-details" class="hidden">
     <h3>Detalhes do Dia <span id="selected-day"></span></h3>
+    <button id="save-data">Salvar</button>
+    <button id="export-csv">Exportar CSV</button>
     <table id="details-table">
       <thead>
         <tr>
@@ -41,12 +43,14 @@
           <th>Possível Retorno</th>
           <th>Resultado</th>
           <th>Lucro</th>
+          <th>Ações</th>
         </tr>
       </thead>
       <tbody>
         <!-- Dados serão preenchidos via JavaScript -->
       </tbody>
     </table>
+    <button id="add-row">Adicionar Linha</button>
   </div>
 
   <!-- Tabela de resumo -->
