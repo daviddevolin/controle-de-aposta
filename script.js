@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Função para adicionar uma nova linha
     function addRow() {
       if (!data[selectedDay]) data[selectedDay] = [];
-      data[selectedDay].push({ casa: "", valor: 0, odd: 0, resultado: "", lucro: 0 });
+      data[selectedDay].push({ casa: "", valor: 0, odd: 0, resultado: "Open", lucro: 0 });
       updateDetailsTable();
     }
   
@@ -105,7 +105,13 @@ document.addEventListener("DOMContentLoaded", function () {
             <td><input type="number" value="${row.valor}" onchange="updateRow(${index}, 'valor', this.value)"></td>
             <td><input type="number" value="${row.odd}" onchange="updateRow(${index}, 'odd', this.value)"></td>
             <td>${row.valor * row.odd}</td>
-            <td><input type="text" value="${row.resultado}" onchange="updateRow(${index}, 'resultado', this.value)"></td>
+            <td>
+              <select onchange="updateRow(${index}, 'resultado', this.value)">
+                <option value="Green" ${row.resultado === "Green" ? "selected" : ""}>Green</option>
+                <option value="Red" ${row.resultado === "Red" ? "selected" : ""}>Red</option>
+                <option value="Open" ${row.resultado === "Open" ? "selected" : ""}>Open</option>
+              </select>
+            </td>
             <td>${row.lucro}</td>
             <td><button onclick="deleteRow(${index})">Excluir</button></td>
           </tr>
@@ -125,9 +131,19 @@ document.addEventListener("DOMContentLoaded", function () {
     // Função para atualizar uma linha
     window.updateRow = function (index, field, value) {
       data[selectedDay][index][field] = value;
-      if (field === "valor" || field === "odd") {
-        data[selectedDay][index].lucro = value * data[selectedDay][index].odd;
+  
+      // Calcular o Lucro com base no Resultado
+      const row = data[selectedDay][index];
+      if (field === "resultado" || field === "valor" || field === "odd") {
+        if (row.resultado === "Green") {
+          row.lucro = (row.valor * row.odd) - row.valor;
+        } else if (row.resultado === "Red") {
+          row.lucro = 0 - row.valor;
+        } else {
+          row.lucro = 0;
+        }
       }
+  
       updateDetailsTable();
     };
   
