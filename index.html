@@ -28,6 +28,48 @@
       </tbody>
     </table>
   </div>
+
+  <!-- Tabela de detalhes do dia -->
+  <div id="day-details" class="hidden">
+    <h3>Detalhes do Dia <span id="selected-day"></span></h3>
+    <table id="details-table">
+      <thead>
+        <tr>
+          <th>Casa</th>
+          <th>Valor</th>
+          <th>Odd</th>
+          <th>Possível Retorno</th>
+          <th>Resultado</th>
+          <th>Lucro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dados serão preenchidos via JavaScript -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tabela de resumo -->
+  <div id="summary-table">
+    <h3>Resumo</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Investimento</th>
+          <th>Possível Retorno</th>
+          <th>Lucro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="total-investment">0</td>
+          <td id="total-possible-return">0</td>
+          <td id="total-profit">0</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

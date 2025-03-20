@@ -3,6 +3,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const monthYear = document.getElementById("month-year");
     const prevMonthButton = document.getElementById("prev-month");
     const nextMonthButton = document.getElementById("next-month");
+    const dayDetails = document.getElementById("day-details");
+    const selectedDayElement = document.getElementById("selected-day");
+    const detailsTableBody = document.querySelector("#details-table tbody");
+    const totalInvestment = document.getElementById("total-investment");
+    const totalPossibleReturn = document.getElementById("total-possible-return");
+    const totalProfit = document.getElementById("total-profit");
   
     let currentDate = new Date();
     let currentYear = currentDate.getFullYear();
@@ -58,14 +64,43 @@ document.addEventListener("DOMContentLoaded", function () {
     // Gerar calendário inicial
     generateCalendar(currentYear, currentMonth);
   
-    // Adicionar interatividade (exibir valor ao clicar em um dia)
+    // Adicionar interatividade (exibir detalhes ao clicar em um dia)
     calendarBody.addEventListener("click", function (event) {
       if (event.target.tagName === "TD" && event.target.textContent) {
         const day = event.target.textContent;
-        const value = prompt(`Digite um valor para o dia ${day}:`);
-        if (value !== null) {
-          event.target.textContent = `${day} (${value})`;
-        }
+        selectedDayElement.textContent = day;
+        dayDetails.classList.remove("hidden");
+  
+        // Simular dados para a tabela de detalhes
+        const data = [
+          { casa: "Casa A", valor: 100, odd: 1.5, resultado: "Ganho", lucro: 50 },
+          { casa: "Casa B", valor: 200, odd: 2.0, resultado: "Perda", lucro: -200 },
+        ];
+  
+        // Preencher a tabela de detalhes
+        detailsTableBody.innerHTML = data
+          .map(
+            (item) => `
+          <tr>
+            <td>${item.casa}</td>
+            <td>${item.valor}</td>
+            <td>${item.odd}</td>
+            <td>${item.valor * item.odd}</td>
+            <td>${item.resultado}</td>
+            <td>${item.lucro}</td>
+          </tr>
+        `
+          )
+          .join("");
+  
+        // Atualizar a tabela de resumo
+        const totalInv = data.reduce((sum, item) => sum + item.valor, 0);
+        const totalRet = data.reduce((sum, item) => sum + item.valor * item.odd, 0);
+        const totalProf = data.reduce((sum, item) => sum + item.lucro, 0);
+  
+        totalInvestment.textContent = totalInv;
+        totalPossibleReturn.textContent = totalRet;
+        totalProfit.textContent = totalProf;
       }
     });
   });
